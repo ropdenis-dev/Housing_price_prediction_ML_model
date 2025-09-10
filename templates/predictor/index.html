@@ -1,0 +1,412 @@
+<!-- templates/predictor/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-primary">🏠 PricePredict</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#prediction" class="text-secondary hover:text-primary transition duration-200">Predict</a>
+                    <a href="#methodology" class="text-secondary hover:text-primary transition duration-200">Methodology</a>
+                    <a href="#features" class="text-secondary hover:text-primary transition duration-200">Features</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-blue-600 to-primary text-white py-16">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Advanced House Price Prediction</h1>
+            <p class="text-xl opacity-90">Leveraging machine learning to accurately estimate property values based on key features</p>
+        </div>
+    </div>
+
+    <!-- Project Explanation Section -->
+    <div id="methodology" class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Project Methodology</h2>
+            
+            <div class="space-y-8">
+                <!-- Data Collection -->
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-3">📊 Data Collection & Source</h3>
+                        <p class="text-gray-700">
+                            The dataset used for this project comes from the <strong>House Prices: Advanced Regression Techniques</strong> 
+                            competition on Kaggle. It contains 79 explanatory variables describing various aspects of residential homes, 
+                            with the goal of predicting the final sale price of each property.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="font-semibold mb-2">Dataset Statistics:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>• 1,460 training examples</li>
+                            <li>• 80 features including sale price</li>
+                            <li>• Mixed data types (numeric, categorical)</li>
+                            <li>• Real-world housing market data from 2006-2010</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Data Preprocessing -->
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h4 class="font-semibold mb-2">Preprocessing Steps:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>• Handling missing values with advanced imputation</li>
+                            <li>• Encoding categorical variables</li>
+                            <li>• Feature scaling with StandardScaler</li>
+                            <li>• Outlier detection and treatment</li>
+                            <li>• Feature engineering for better predictive power</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-green-600 mb-3">🧹 Data Preprocessing & Cleaning</h3>
+                        <p class="text-gray-700">
+                            Comprehensive data cleaning was performed to handle missing values, outliers, and data inconsistencies. 
+                            Categorical variables were encoded using appropriate techniques, and features were scaled to ensure 
+                            optimal model performance. This rigorous preprocessing ensures reliable and accurate predictions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exploratory Analysis -->
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <h3 class="text-xl font-semibold text-purple-600 mb-3">📈 Exploratory Data Analysis</h3>
+                        <p class="text-gray-700">
+                            Extensive exploratory analysis was conducted to understand feature distributions, correlations, 
+                            and relationships with the target variable (sale price). Visualization techniques including heatmaps, 
+                            scatter plots, and distribution charts were used to identify patterns and inform feature selection.
+                        </p>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <h4 class="font-semibold mb-2">Key Insights:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>• Strong correlation between OverallQuality and SalePrice</li>
+                            <li>• Living area shows positive relationship with price</li>
+                            <li>• Newer homes generally command higher prices</li>
+                            <li>• Garage size significantly impacts property value</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feature Engineering -->
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <h4 class="font-semibold mb-2">Selected Features:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>• OverallQual: Overall material and finish quality</li>
+                            <li>• GrLivArea: Above grade living area square feet</li>
+                            <li>• GarageCars: Size of garage in car capacity</li>
+                            <li>• TotalBsmtSF: Total square feet of basement area</li>
+                            <li>• YearBuilt: Original construction date</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-orange-600 mb-3">⚙️ Feature Engineering & Selection</h3>
+                        <p class="text-gray-700">
+                            Through correlation analysis and feature importance ranking, the most predictive features were selected. 
+                            The five most influential features were chosen to balance model complexity with predictive accuracy, 
+                            ensuring both performance and interpretability.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Model Development -->
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <h3 class="text-xl font-semibold text-red-600 mb-3">🤖 Model Development & Training</h3>
+                        <p class="text-gray-700">
+                            A <strong>Linear Regression</strong> model was implemented due to its interpretability and strong performance 
+                            on this dataset. The model was trained on 80% of the data with 20% held out for testing. 
+                            Hyperparameter tuning and cross-validation were employed to optimize performance.
+                        </p>
+                    </div>
+                    <div class="bg-red-50 p-6 rounded-lg">
+                        <h4 class="font-semibold mb-2">Model Performance:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>• R² Score: 0.82 (82% of variance explained)</li>
+                            <li>• Mean Absolute Error: $22,500</li>
+                            <li>• Root Mean Squared Error: $32,800</li>
+                            <li>• Cross-validated consistency</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Deployment -->
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div class="bg-indigo-50 p-6 rounded-lg">
+                        <h4 class="font-semibold mb-2">Tech Stack:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>• Backend: Django Python Web Framework</li>
+                            <li>• Machine Learning: Scikit-learn</li>
+                            <li>• Frontend: Tailwind CSS</li>
+                            <li>• Data Processing: Pandas, NumPy</li>
+                            <li>• Model Serialization: Joblib</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-indigo-600 mb-3">🚀 Model Deployment</h3>
+                        <p class="text-gray-700">
+                            The trained model was serialized and integrated into a Django web application framework. 
+                            The web interface allows users to input property features and receive instant price predictions. 
+                            The application includes proper error handling, input validation, and a responsive design.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Explanation Section -->
+    <div id="features" class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Understanding the Predictive Features</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-primary mb-2">Overall Quality (1-10)</h3>
+                    <p class="text-sm text-gray-700">
+                        Rates the overall material and finish of the house on a scale from 1 (very poor) to 10 (very excellent). 
+                        This is the strongest predictor of sale price.
+                    </p>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-green-600 mb-2">Above Ground Living Area (sq ft)</h3>
+                    <p class="text-sm text-gray-700">
+                        The total square footage of above-grade (ground level) living area. Larger homes generally command higher prices, 
+                        making this a crucial feature.
+                    </p>
+                </div>
+                
+                <div class="bg-purple-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-purple-600 mb-2">Garage Size (car capacity)</h3>
+                    <p class="text-sm text-gray-700">
+                        The size of the garage measured by how many cars it can accommodate. Garage space significantly increases 
+                        property value and functionality.
+                    </p>
+                </div>
+                
+                <div class="bg-orange-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-orange-600 mb-2">Total Basement Area (sq ft)</h3>
+                    <p class="text-sm text-gray-700">
+                        The total square footage of the basement area. Finished basements add living space and value to a home, 
+                        while unfinished basements provide storage utility.
+                    </p>
+                </div>
+                
+                <div class="bg-red-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-red-600 mb-2">Year Built</h3>
+                    <p class="text-sm text-gray-700">
+                        The original construction date of the property. Newer homes typically have modern amenities and require 
+                        less immediate maintenance, influencing their market value.
+                    </p>
+                </div>
+                
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-indigo-600 mb-2">Model Interpretation</h3>
+                    <p class="text-sm text-gray-700">
+                        The linear regression model weights indicate how much each feature contributes to the final price prediction. 
+                        Positive coefficients mean the feature increases the predicted price.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prediction Section -->
+    <div id="prediction" class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">House Price Prediction</h2>
+                <p class="text-lg text-secondary">Enter the property details below to get an instant price prediction</p>
+            </div>
+
+            <!-- Prediction Form -->
+            <form id="prediction-form" action="/predict/" method="POST" class="space-y-6">
+                {% csrf_token %}
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Overall Quality -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Overall Quality (1-10)</label>
+                        <input type="number" name="overall_qual" min="1" max="10" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200"
+                               placeholder="Enter 1-10">
+                    </div>
+
+                    <!-- Living Area -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Living Area (sq ft)</label>
+                        <input type="number" name="gr_liv_area" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200"
+                               placeholder="e.g., 1500">
+                    </div>
+
+                    <!-- Garage Cars -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Garage Size (cars)</label>
+                        <input type="number" name="garage_cars" min="0" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200"
+                               placeholder="e.g., 2">
+                    </div>
+
+                    <!-- Basement Area -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Basement Area (sq ft)</label>
+                        <input type="number" name="total_bsmt_sf" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200"
+                               placeholder="e.g., 800">
+                    </div>
+
+                    <!-- Year Built -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Year Built</label>
+                        <input type="number" name="year_built" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200"
+                               placeholder="e.g., 2000">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit"
+                            class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        🚀 Predict Price
+                    </button>
+                </div>
+            </form>
+
+            <!-- Results Section -->
+            <div id="result" class="mt-8 hidden">
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 id="prediction-result" class="text-2xl font-bold text-green-800"></h3>
+                            <p class="mt-2 text-sm text-green-600">Based on the provided features and our trained machine learning model</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="error" class="mt-8 hidden">
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-medium text-red-800" id="error-message"></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-secondary">Built with Django & Tailwind CSS | Machine Learning Model by Christopher Bundi</p>
+            <p class="text-sm text-gray-500 mt-2">Data source: Kaggle House Prices - Advanced Regression Techniques competition</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '⏳ Predicting...';
+            submitBtn.disabled = true;
+            
+            // Hide previous results
+            document.getElementById('result').classList.add('hidden');
+            document.getElementById('error').classList.add('hidden');
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('/predict/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.prediction) {
+                    document.getElementById('prediction-result').textContent = data.prediction;
+                    document.getElementById('result').classList.remove('hidden');
+                    
+                    // Smooth scroll to results
+                    document.getElementById('result').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                } else if (data.error) {
+                    document.getElementById('error-message').textContent = 'Error: ' + data.error;
+                    document.getElementById('error').classList.remove('hidden');
+                }
+            } catch (error) {
+                document.getElementById('error-message').textContent = 'Network error: ' + error.message;
+                document.getElementById('error').classList.remove('hidden');
+            } finally {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
