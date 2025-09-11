@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,7 +12,8 @@ SECRET_KEY = 'your-secret-key-here'  # Change this in production!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']# For now, will configure properly later
+
 
 # Application definition
 INSTALLED_APPS = [

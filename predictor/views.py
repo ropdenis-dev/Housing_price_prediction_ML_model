@@ -15,7 +15,7 @@ try:
     scaler = joblib.load(SCALER_PATH)
     print("✅ Model and Scaler loaded successfully!")
 except Exception as e:
-    print(f"❌ Error loading model: {e}")
+    print(f" Error loading model: {e}")
     model = None
     scaler = None
 
