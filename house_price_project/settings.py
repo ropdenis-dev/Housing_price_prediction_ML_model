@@ -2,18 +2,16 @@
 import os
 from pathlib import Path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'your-secret-key-here'  # Change this in production!
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-here')  # Use environment variable
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'  # False in production
 
-ALLOWED_HOSTS = ['*']# For now, will configure properly later
-
+ALLOWED_HOSTS = ['*']  # For now, will configure properly later
 
 # Application definition
 INSTALLED_APPS = [
@@ -28,6 +26,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← ADD THIS LINE (right after SecurityMiddleware)
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -57,8 +56,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'house_price_project.wsgi.application'
 
+# Database
+# Using SQLite for simplicity since we don't need persistent data
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ← ADD THIS LINE (crucial for production)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Tell Django to look in the static folder
 ]
+
+# WhiteNoise configuration for serving static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # ← ADD THIS LINE
+
+# Disable migrations since we don't need database tables
+MIGRATION_MODULES = {
+    'admin': None,
+    'auth': None,
+    'contenttypes': None,
+    'sessions': None,
+}
