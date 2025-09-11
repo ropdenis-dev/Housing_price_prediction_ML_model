@@ -22,6 +22,8 @@ except Exception as e:
 def home(request):
     """Render the main page"""
     return render(request, 'predictor/index.html')
+def ml_roadmap(request):
+    return render(request, 'predictor/ml_roadmap.html')
 
 @csrf_exempt  # For simplicity, disable CSRF protection for this view
 def predict(request):
