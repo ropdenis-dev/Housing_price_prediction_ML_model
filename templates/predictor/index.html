@@ -63,13 +63,143 @@
   </div>
 </nav>
 
-    <!-- Hero Section -->
-    <div class="bg-gradient-to-r from-blue-600 to-primary text-white py-16">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Advanced House Price Prediction</h1>
-            <p class="text-xl opacity-90">Leveraging machine learning AI to accurately estimate property values based on key features</p>
+<!-- Hero Section -->
+<div class="bg-gradient-to-r from-blue-600 to-primary text-white py-16 relative overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
+        <div class="absolute top-1/4 right-20 w-16 h-16 bg-yellow-400/20 rounded-lg animate-bounce delay-300"></div>
+        <div class="absolute bottom-20 left-1/4 w-24 h-24 bg-green-400/15 rounded-full animate-ping"></div>
+        <div class="absolute bottom-10 right-10 w-12 h-12 bg-purple-400/20 rounded-lg animate-pulse delay-700"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Animated main heading -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 animate-fade-in-down">
+            <span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                ML-Driven House Price Prediction
+            </span>
+        </h1>
+
+        <!-- Animated subtitle -->
+        <p class="text-lg sm:text-xl opacity-90 mb-6 animate-fade-in-up delay-200">
+            Powered by <span class="text-yellow-300 font-semibold animate-pulse">Machine Learning</span> algorithms and 
+            <span class="text-blue-300 font-semibold">AI</span> for accurate House value predictions
+        </p>
+
+        <!-- Animated developer badge -->
+        <div class="animate-bounce-in delay-500">
+            <span class="bg-yellow-600 text-white px-4 py-2 rounded-lg text-base sm:text-lg font-semibold shadow-lg hover:bg-yellow-700 transition-all duration-300 transform hover:scale-105 inline-block">
+                🚀 Developed by Christopher Bundi
+            </span>
+        </div>
+
+        <!-- Animated credentials -->
+        <p class="text-sm sm:text-base opacity-80 mt-4 animate-fade-in delay-700">
+            CS Student • KIBU 2025 • Data Science Enthusiast
+        </p>
+
+        <!-- Animated CTA button -->
+        <div class="mt-8 animate-fade-in delay-1000">
+            <a href="#prediction" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-110 shadow-lg">
+                🏠 Start Predicting
+                <svg class="w-5 h-5 ml-2 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
         </div>
     </div>
+
+    <!-- Floating houses animation -->
+    <div class="absolute bottom-0 left-0 right-0 flex justify-between px-8 opacity-50">
+        <div class="text-4xl animate-float">🏠</div>
+        <div class="text-4xl animate-float delay-300">🏢</div>
+        <div class="text-4xl animate-float delay-700">🏡</div>
+        <div class="text-4xl animate-float delay-500">🏘️</div>
+    </div>
+</div>
+
+<style>
+    /* Custom animations */
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.3);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    
+    @keyframes bounceX {
+        0%, 100% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(5px);
+        }
+    }
+    
+    .animate-fade-in-down {
+        animation: fadeInDown 1s ease-out;
+    }
+    
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    .animate-bounce-in {
+        animation: bounceIn 1s ease-out;
+    }
+    
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .animate-bounce-x {
+        animation: bounceX 2s ease-in-out infinite;
+    }
+    
+    .animate-fade-in {
+        animation: fadeInUp 1s ease-out;
+    }
+</style>
 
     <!-- Project Explanation Section -->
     <div id="methodology" class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
