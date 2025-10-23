@@ -54,7 +54,7 @@ Installation Steps
 Clone the repository:
 
 bash
-git clone https://github.com/yourusername/housing-price-prediction.git
+git clone https://github.com/christopher639/housing-price-prediction.git
 cd housing-price-prediction
 Install required packages:
 
@@ -253,3 +253,4 @@ API for third-party integrations
 
 📄 License
 This project is open source and available under the MIT License.
+
