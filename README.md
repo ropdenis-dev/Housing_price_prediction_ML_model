@@ -239,7 +239,9 @@ Computer Science Student • KIBU 2025
 Software Engineer & ML Enthusiast
 
 Specializing in Data Science and Machine Learning applications
+
 This project is based on the work by [christopher639](https://github.com/christopher639/Housing_price_prediction_ML_model)
+
 🚀 Future Enhancements
 Integration of more advanced algorithms (XGBoost, Neural Networks)
 
@@ -253,5 +255,6 @@ API for third-party integrations
 
 📄 License
 This project is open source and available under the MIT License.
+
 
 
